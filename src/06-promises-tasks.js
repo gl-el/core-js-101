@@ -59,9 +59,8 @@ function processAllPromises(array) {
     const res = [];
     array.map((item) => item.then((result) => {
       res.push(result);
-    }));
+    }).catch(() => reject()));
     resolve(res);
-    reject(new Error('failed'));
   });
   return promise;
 }
